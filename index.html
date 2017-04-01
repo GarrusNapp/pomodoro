@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pomodoro clock</title>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div class="container well text-center">
+  <div><h4>Pomodoro clock</h4></div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="border">
+        Work time:<p><span id="workTime">2</span>:00</p>
+        <div class="btn-group">
+         <button class="btn btn-default">-5</button>
+         <button class="btn btn-default">-1</button>
+         <button class="btn btn-default">+1</button>
+         <button class="btn btn-default">+5</button>
+       </div>
+     </div>
+    </div>
+    <div class="col-md-6">
+      <div class="border">
+        Break time: <p><span id="breakTime">1</span>:00</p>
+        <div class="btn-group">
+         <button class="btn btn-default">-5</button>
+         <button class="btn btn-default">-1</button>
+         <button class="btn btn-default">+1</button>
+         <button class="btn btn-default">+5</button>
+       </div>
+      </div>
+    </div>
+  </div><br>
+  <p>Time left: <span id="time">---</span>
+  <div class="try"><div class="countdown"></div></div>
+  <br>
+  <button id="ok">OK</button>
+
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
