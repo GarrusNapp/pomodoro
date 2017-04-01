@@ -2,27 +2,34 @@
 $(document).ready(function () {
 var running = false; //control var for buttons behaviour
 var i = 0; //how many cycles have passed
-$("#workTime").html()
-$("#breakTime").html()
+var cycleLimit;
 
 function count() {
   var workTime = $("#workTime").html();
   var breakTime = $("#breakTime").html();
   var c;
+  if (i == cycleLimit){
+    running = false;
+  }
+
   if (i%2 == 0) {
     var x = workTime*10;
     c = setInterval(timer,1000);
     $(".countdown").css("background-color","blue");
+    $(".countdown").html("WORK TIME!");
+
   }
   else {
-    var x = breakTime*10;  
+    var x = breakTime*10;
     c = setInterval(timer,1000);
     $(".countdown").css("background-color","green");
+    $(".countdown").html("BREAK TIME!");
   }
 
   function timer(){
     if (!running) {
       clearInterval(c);
+      control();
       return;
     }
     $("#time").html(x);
@@ -31,22 +38,21 @@ function count() {
       i++;
       clearInterval(c);
       count();
-
     }
   }
 }
 
 function control() {
   if (running) {
-    alert(running);
     $("#ok").html("STOP");
-    $(".row button").prop("disabled", true);
+    $(".row button, #cycleChange button").prop("disabled", true);
     count();
   }
   else {
     $("#ok").html("OK");
-    $(".row button").prop("disabled", false);
+    $(".row button, #cycleChange button").prop("disabled", false);
     $("#time").html("---");
+    i = 0;
   }
 }
 
@@ -64,8 +70,22 @@ $(".row button").click(function(){ //time changing buttons
 $("#ok").click(function(){
   running = !running;
   control();
-
   // $(".countdown").width(100);
 });
+
+$("#cycleChange button").click(function(){
+  var cycle = parseInt($("#cycles").html());  //current cycles
+  var difference = parseInt($(this).html()); //value of clicked button
+  var result = cycle + difference;
+  if (result <= 0) {
+    result = 1;
+  }
+  cycleLimit = result*2;
+  $("#cycles").html(result);
+  // $(".countdown").width(100);
+});
+
+
+$('[data-toggle="tooltip"]').tooltip();
 
 });

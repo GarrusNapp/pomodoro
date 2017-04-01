@@ -18,6 +18,10 @@
   width: 400px;
   margin-top: 40px;
 }
+.fa {
+  font-size: 0.5em;
+  float: right;
+}
 
 p {
   padding: 5px;
