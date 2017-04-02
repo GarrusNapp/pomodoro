@@ -7,6 +7,7 @@ var cycleLimit;
 function count() {
   var workTime = $("#workTime").html();
   var breakTime = $("#breakTime").html();
+  var cycleLimit = $("#cycles").html()*2;
   var c;
   if (i == cycleLimit){
     running = false;
@@ -45,26 +46,26 @@ function count() {
 function control() {
   if (running) {
     $("#ok").html("STOP");
-    $(".row button, #cycleChange button").prop("disabled", true);
+    $(".border button").prop("disabled", true);
     count();
   }
   else {
     $("#ok").html("OK");
-    $(".row button, #cycleChange button").prop("disabled", false);
+    $(".border button").prop("disabled", false);
     $("#time").html("---");
     i = 0;
   }
 }
 
-/// increment or decrement work/break time
-$(".row button").click(function(){ //time changing buttons
-  var time = parseInt($(this).parent().siblings("p").children().html());  //current work/break time
+/// increment or decrement work/break time/cycles
+$(".border button").click(function(){
+  var time = parseInt($(this).parent().siblings("p").children("span").html());  //current value
   var difference = parseInt($(this).html()); //value of clicked button
   var result = time + difference;
   if (result <= 0) {
     result = 1;
   }
-  $(this).parent().siblings("p").children().html(result);
+  $(this).parent().siblings("p").children("span").html(result);
 });
 
 $("#ok").click(function(){
@@ -73,19 +74,6 @@ $("#ok").click(function(){
   // $(".countdown").width(100);
 });
 
-$("#cycleChange button").click(function(){
-  var cycle = parseInt($("#cycles").html());  //current cycles
-  var difference = parseInt($(this).html()); //value of clicked button
-  var result = cycle + difference;
-  if (result <= 0) {
-    result = 1;
-  }
-  cycleLimit = result*2;
-  $("#cycles").html(result);
-  // $(".countdown").width(100);
-});
-
 
 $('[data-toggle="tooltip"]').tooltip();
-
 });
