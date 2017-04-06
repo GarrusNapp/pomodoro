@@ -14,17 +14,19 @@ function count() {
   }
 
   if (i%2 == 0) {
-    var x = workTime*10;
+    var x = workTime*60;
+    var full = x;
     c = setInterval(timer,1000);
     $(".countdown").css("background-color","blue");
-    $(".countdown").html("WORK TIME!");
+    $("#phase").html("Work Time!");
 
   }
   else {
-    var x = breakTime*10;
+    var x = breakTime*60;
+    var full = x;
     c = setInterval(timer,1000);
     $(".countdown").css("background-color","green");
-    $(".countdown").html("BREAK TIME!");
+    $("#phase").html("Break Time!");
   }
 
   function timer(){
@@ -33,13 +35,19 @@ function count() {
       control();
       return;
     }
+
     $("#time").html(x);
+    fill();
     x--;
     if (x == -1) {
       i++;
       clearInterval(c);
       count();
     }
+  }
+
+  function fill() {
+    $(".countdown").css("width",x/full*100+"%");
   }
 }
 
@@ -53,6 +61,10 @@ function control() {
     $("#ok").html("OK");
     $(".border button").prop("disabled", false);
     $("#time").html("---");
+    $(".countdown").html("");
+    $(".countdown").css("width",0);
+    $("#phase").html("");
+
     i = 0;
   }
 }

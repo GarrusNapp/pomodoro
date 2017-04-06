@@ -1,10 +1,13 @@
 .countdown {
-  padding: 10px;
+  /*padding: 10px;*/
+  height: 10px;
+  display: block;
   background-color: red;
   animation-name: slide;
   animation-duration: 1s;
-  width: 100%;
+  color: white;
   border-radius: 5px;
+
 }
 
 .try {
