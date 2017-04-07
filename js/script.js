@@ -55,7 +55,7 @@ function toMinutes(sec) {
   var minutes = Math.floor(sec/60);
   var seconds = (sec%60).toString();
   if (seconds.length == 1) {
-    seconds = "00";
+    seconds = "0" + seconds;
   }
   return minutes + ":" + seconds;
 }
