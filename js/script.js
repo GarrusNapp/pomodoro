@@ -2,7 +2,7 @@
 $(document).ready(function () {
 var running = false; //control var for buttons behaviour
 var i = 0; //how many cycles have passed
-var cycleLimit;
+var cycleLimit; //how many cycles needed
 
 function count() {
   var workTime = $("#workTime").html();
@@ -12,7 +12,7 @@ function count() {
   if (i == cycleLimit){
     running = false;
   }
-
+  ///deciding whether to use work or break time
   if (i%2 == 0) {
     var x = workTime*60;
     var full = x;
@@ -36,7 +36,7 @@ function count() {
       return;
     }
 
-    $("#time").html(x);
+    $("#time").html(toMinutes(x));
     fill();
     x--;
     if (x == -1) {
@@ -51,6 +51,15 @@ function count() {
   }
 }
 
+function toMinutes(sec) {
+  var minutes = Math.floor(sec/60);
+  var seconds = (sec%60).toString();
+  if (seconds.length == 1) {
+    seconds = "00";
+  }
+  return minutes + ":" + seconds;
+}
+
 function control() {
   if (running) {
     $("#ok").html("STOP");
@@ -60,11 +69,9 @@ function control() {
   else {
     $("#ok").html("OK");
     $(".border button").prop("disabled", false);
-    $("#time").html("---");
-    $(".countdown").html("");
+    $("#time").html("&#9679;");
     $(".countdown").css("width",0);
-    $("#phase").html("");
-
+    $("#phase").html("&#9679;");
     i = 0;
   }
 }
@@ -83,7 +90,6 @@ $(".border button").click(function(){
 $("#ok").click(function(){
   running = !running;
   control();
-  // $(".countdown").width(100);
 });
 
 

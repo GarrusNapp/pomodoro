@@ -1,3 +1,8 @@
+body {
+  background-image: url("../images/bgn-min.jpg");
+  background-size: cover;
+}
+
 .countdown {
   /*padding: 10px;*/
   height: 10px;
@@ -7,7 +12,11 @@
   animation-duration: 1s;
   color: white;
   border-radius: 5px;
+}
 
+h1 {
+  font-family: 'Averia Sans Libre';
+  font-size: 3.5em;
 }
 
 .try {
@@ -18,9 +27,12 @@
 }
 
 .well {
+  background-color: rgba(245, 245, 245, 0.9);
   width: 400px;
   margin-top: 40px;
+  padding: 0px 19px 19px 19px;
 }
+
 .fa {
   font-size: 0.5em;
   float: right;
@@ -28,7 +40,7 @@
 
 p {
   padding: 5px;
-  font-size: 18px;
+  font-size: 2em;
 }
 
 .border {
