@@ -3,6 +3,8 @@ $(document).ready(function () {
 var running = false; //control var for buttons behaviour
 var i = 0; //how many cycles have passed
 var cycleLimit; //how many cycles needed
+var audio = new Audio('./audio/ding.mp3');
+
 
 function count() {
   var workTime = $("#workTime").html();
@@ -19,6 +21,7 @@ function count() {
     c = setInterval(timer,1000);
     $(".countdown").css("background-color","blue");
     $("#phase").html("Work Time!");
+    audio.play();
 
   }
   else {
@@ -27,6 +30,7 @@ function count() {
     c = setInterval(timer,1000);
     $(".countdown").css("background-color","green");
     $("#phase").html("Break Time!");
+    audio.play();
   }
 
   function timer(){

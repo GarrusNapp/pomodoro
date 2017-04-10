@@ -1,6 +1,7 @@
 body {
   background-image: url("../images/bgn-min.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .countdown {
@@ -47,7 +48,7 @@ p {
   border-style: solid;
   border-width: 2px;
   border-radius: 10px;
-  padding: 2px;
+  padding: 1px;
   margin-top: 10px;
 }
 
